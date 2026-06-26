@@ -1,0 +1,83 @@
+[
+  {
+    "testName": "Valid Data",
+    "company": "Techdome",
+    "fname": "Tejoram",
+    "lname": "Nandimandalam",
+    "email": "tejoramn@gmail.com",
+    "message": "Hello Techdome",
+    "expected": "success"
+  },
+  {
+    "testName": "Invalid Data",
+    "company": "Techdome",
+    "fname": "abc",
+    "lname": "xyz",
+    "email": "abcxyz.com",
+    "message": "Hello Techdome",
+    "expected": "failure"
+  },
+  {
+    "testName": "Valid Gmail",
+    "company": "Google",
+    "fname": "John",
+    "lname": "Doe",
+    "email": "john.doe@gmail.com",
+    "message": "Testing valid Gmail address.",
+    "expected": "success"
+  },
+  {
+    "testName": "Valid Outlook",
+    "company": "Microsoft",
+    "fname": "Jane",
+    "lname": "Smith",
+    "email": "jane.smith@outlook.com",
+    "message": "Testing valid Outlook email.",
+    "expected": "success"
+  },
+  {
+    "testName": "Valid Corporate Email",
+    "company": "Infosys",
+    "fname": "Rahul",
+    "lname": "Sharma",
+    "email": "rahul.sharma@infosys.com",
+    "message": "Requesting product information.",
+    "expected": "success"
+  },
+  {
+    "testName": "Invalid Message",
+    "company": "TCS",
+    "fname": "Priya",
+    "lname": "Patel",
+    "email": "priyapatel@gmail.com",
+    "message": "Hello ",
+    "expected": "failure"
+  },
+  {
+    "testName": "Invalid Email Missing Domain",
+    "company": "Wipro",
+    "fname": "Arun",
+    "lname": "Kumar",
+    "email": "arun@",
+    "message": "Testing invalid email.",
+    "expected": "failure"
+  },
+  {
+    "testName": "Invalid Email Double @",
+    "company": "Accenture",
+    "fname": "Neha",
+    "lname": "Verma",
+    "email": "neha@@gmail.com",
+    "message": "Testing double @ symbol.",
+    "expected": "failure"
+  },
+  {
+    "testName": "Valid Yahoo Email",
+    "company": "Oracle",
+    "fname": "Anjali",
+    "lname": "Reddy",
+    "email": "anjali.reddy@yahoo.com",
+    "message": "Interested in your services.",
+    "expected": "success"
+  }
+]
