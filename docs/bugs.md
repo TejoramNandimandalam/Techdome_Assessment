@@ -205,7 +205,7 @@ The application may be more susceptible to clickjacking, MIME-type sniffing, and
 ### Evidence
 * Browser response header inspection.
 * Automated security validation.
-* File: `tests/security/security-headers.spec.ts`
+* File: `tests/security/security-headers-presence.spec.ts`
 
 ### Notes
 These findings require server-side remediation.

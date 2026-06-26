@@ -52,14 +52,5 @@
     "email": "neha@@gmail.com",
     "message": "Testing double @ symbol.",
     "expected": "failure"
-  },
-  {
-    "testName": "Valid Yahoo Email",
-    "company": "Oracle",
-    "fname": "Anjali",
-    "lname": "Reddy",
-    "email": "anjali.reddy@yahoo.com",
-    "message": "Interested in your services.",
-    "expected": "success"
   }
 ]

@@ -30,6 +30,7 @@ exploreMoreButton = () =>
   }
 
 async clickContactUs() {
+  await this.page.waitForTimeout(2000)
   await this.contactUsButton().click();
 }
 

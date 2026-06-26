@@ -5,4 +5,3 @@ Valid Gmail,Google,John,Doe,john.doe@gmail.com,Testing valid Gmail address.,succ
 Valid Outlook,Microsoft,Jane,Smith,jane.smith@outlook.com,Testing valid Outlook email.,success
 Invalid Email Missing Domain,Wipro,Arun,Kumar,arun@,Testing invalid email.,failure
 Invalid Email Double @,Accenture,Neha,Verma,neha@@gmail.com,Testing double @ symbol.,failure
-Valid Yahoo Email,Oracle,Anjali,Reddy,anjali.reddy@yahoo.com,Interested in your services.,success

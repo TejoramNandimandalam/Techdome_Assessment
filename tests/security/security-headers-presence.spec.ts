@@ -6,6 +6,11 @@ test.describe('Security Header Presence Tests', () => {
     test('Verify critical security headers are present',
         async ({ request }) => {
 
+            test.fail(
+                true,
+                'Known issue: critical security headers are missing (BUG-005)'
+            );
+
             const response = await request.get(baseURL);
 
             const headers = response.headers();

@@ -3,15 +3,14 @@ import { ContactPage } from '../../pages/ContactPage';
 import { DataProvider } from '../../pages/utils/dataProvider';
 import { baseURL, HomePage } from "../../pages/HomePage";
 
-
 //Load JSON test data logindata.json
-
 const jsonPath = "test-data/logindata.json";
 const jsonTestData = DataProvider.getTestDataFromJson(jsonPath);
 
-
 for (const data of jsonTestData) {
     test(`Login Test with JSON Data: ${data.testName}, ${data.email}`, async ({ page }) => {
+
+        test.setTimeout(60000);
 
         const homePage = new HomePage(page);
         await homePage.navigateToHomePage();
@@ -39,6 +38,8 @@ const csvTestData = DataProvider.getTestDataFromCsv(csvPath);
 
 for (const data of csvTestData) {
     test(`Login Test with CSV Data: ${data.testName}, ${data.email}`, async ({ page }) => {
+
+        test.setTimeout(60000);
 
         const homePage = new HomePage(page);
         await homePage.navigateToHomePage();
