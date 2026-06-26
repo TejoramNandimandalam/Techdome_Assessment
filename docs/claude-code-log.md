@@ -1,90 +1,115 @@
 # Claude Code Usage Log
 
-## Prompt #1
-
-**What I asked:**
-"Help me design a robust selector strategy for Techdome navigation menus and dropdowns."
-
-**What Claude did:**
-Suggested using text-based locators and hover actions for Expertise, Industries, and Insights menus.
-
-**What I changed / accepted / rejected:**
-During execution, multiple navigation tests failed because menu items were dynamically rendered and some hover actions were unreliable. After manually inspecting the DOM and using Playwright Codegen, I rejected several text-based selectors and implemented custom navigation methods using dynamic XPath and role-based selectors. Additional synchronization logic and waits were introduced to stabilize execution.
+This file records significant interactions where AI was used as a problem-solving and design assistant during the assignment. All suggestions were reviewed, validated against the live application, and modified where necessary before implementation.
 
 ---
 
-## Prompt #2
+## Prompt 1 — Stabilizing Navigation Dropdown Automation
 
 **What I asked:**
-"Help me automate the Contact Us form validations."
 
-**What Claude did:**
-Suggested validating mandatory fields by asserting the presence of the HTML `required` attribute.
+"The Expertise, Industries, and Insights dropdowns are visible manually, but Playwright fails to locate or interact with the dropdown items consistently. How can dynamic hover-based menus be automated reliably?"
 
-**What I changed / accepted / rejected:**
-The tests repeatedly failed because the website does not implement HTML `required` attributes for mandatory fields. Instead, validation is handled through browser behaviour and custom messages. I manually inspected the HTML source and rejected the original approach. I redesigned the validation strategy based on actual runtime behaviour observed during exploratory testing rather than assumptions.
+**What the AI did:**
+
+The AI suggested multiple approaches including text-based selectors, role-based locators, hover actions, explicit waits, and synchronization techniques for handling dynamically rendered menus.
+
+**What I changed:**
+
+The suggested implementation did not work reliably because the dropdown content was rendered dynamically and some text locators resolved to multiple elements, causing strict mode violations. I manually inspected the DOM using browser DevTools and Playwright Codegen. After several iterations, I replaced unstable selectors, redesigned the navigation page methods, and added additional synchronization logic. Significant effort was spent stabilizing these hover-based interactions because each dropdown behaved differently.
 
 ---
 
-## Prompt #3
+## Prompt 2 — Automating Home Page CTA Navigation
 
 **What I asked:**
-"Help me implement integration tests for contact form submission and API validation."
 
-**What Claude did:**
-Suggested intercepting XHR/Fetch requests and validating request payloads.
+"The CTA buttons on the home page (Contact Us, Meet the Minds, Expand Your Knowledge, Explore More) are visible in the browser but Playwright is unable to click them consistently. What alternative locator and interaction strategies can be used?"
 
-**What I changed / accepted / rejected:**
-While investigating network traffic through browser DevTools, I discovered that the contact form does not send any XHR or Fetch requests. Form submission is performed through URL navigation with query parameters. I rejected the original API interception approach and instead implemented tests validating successful navigation and application stability after submission. This investigation required extensive network analysis and manual verification.
+**What the AI did:**
+
+The AI proposed different locator strategies including role-based selectors, text-based selectors, visibility checks, and navigation assertions.
+
+**What I changed:**
+
+Several generated locators proved unstable during execution. I used Playwright Codegen and manual DOM inspection to identify more reliable locators and navigation flows. Different combinations of selectors were evaluated before finalizing the page object methods. Some generated selectors were completely rejected because they failed across multiple executions. The final implementation relied on validated locators and URL assertions rather than generated scripts alone.
 
 ---
 
-## Prompt #4
+## Prompt 3 — Contact Form Validation Investigation
 
 **What I asked:**
-"Help me create third-party integration tests for analytics scripts."
 
-**What Claude did:**
-Suggested capturing and validating Google Analytics requests.
+"The contact form fields are mandatory, but Playwright cannot locate the HTML `required` attribute. How should mandatory field validation be automated in this scenario?"
 
-**What I changed / accepted / rejected:**
-Initial implementation failed because analytics requests were inconsistent across executions. After analysing browser network logs, I identified multiple Google Analytics endpoints (`google-analytics.com` and `google.com/g/collect`). I enhanced the detection logic to monitor both endpoints, resulting in a more reliable integration test.
+**What the AI did:**
+
+The AI suggested validating mandatory fields through HTML attributes and browser validation handling.
+
+**What I changed:**
+
+The proposed approach failed because the application does not implement HTML `required` attributes for mandatory fields. I manually inspected every form element using browser DevTools and confirmed that validation was handled through browser behaviour and runtime messages instead. I rejected the original implementation and redesigned the validation strategy based entirely on actual application behaviour. This investigation prevented incorrect assumptions from being introduced into the automation suite.
 
 ---
 
-## Prompt #5
+## Prompt 4 — Contact Form API and Network Behaviour Analysis
 
 **What I asked:**
-"Help me implement performance and load tests according to assignment constraints."
 
-**What Claude did:**
-Suggested concurrent user simulation and response-time validation.
+"How can I intercept and validate the Contact Us form API request, request payload, and response using Playwright network interception?"
 
-**What I changed / accepted / rejected:**
-The assignment explicitly restricted load testing to a maximum of five concurrent users. I ensured the implementation strictly simulated exactly five users and no more. During execution, the application consistently violated the required SLA (p95 < 3 seconds). Instead of modifying thresholds to force test success, I retained the original assertions and documented the performance degradation as a product defect.
+**What the AI did:**
+
+The AI suggested implementing request and response interception using Playwright network listeners (`page.on('request')`, `page.on('response')`) and validating REST API traffic.
+
+**What I changed:**
+
+During network analysis using browser DevTools and Playwright listeners, I discovered that the application does not send traditional REST API requests (`XHR` or `Fetch`) during form submission. Instead, form submission occurs through URL navigation with query parameters while simultaneously triggering analytics requests. I rejected the original API interception approach and redesigned the integration tests to validate successful navigation, query parameter generation, third-party request generation, and overall application stability. This investigation significantly changed the final integration testing strategy.
 
 ---
 
-## Prompt #6
+## Prompt 5 — Third-Party Script and Analytics Validation
 
 **What I asked:**
-"Help me investigate security validation failures and missing security headers."
 
-**What Claude did:**
-Suggested validating standard HTTP security headers and XSS prevention mechanisms.
+"How can third-party integrations such as Google Analytics be validated using Playwright?"
 
-**What I changed / accepted / rejected:**
-Execution results showed that important security headers such as `X-Frame-Options`, `Strict-Transport-Security`, and `Content-Security-Policy` were absent. Rather than weakening assertions to make tests pass, I preserved the checks and treated the missing headers as legitimate security findings to be reported in `bugs.md`.
+**What the AI did:**
+
+The AI suggested monitoring outgoing network requests and validating that analytics-related calls were successfully generated during application usage.
+
+**What I changed:**
+
+Initial implementations failed because analytics requests were inconsistent across executions. After analysing browser network logs, I identified that requests were being sent to multiple endpoints including `google-analytics.com` and `google.com/g/collect`. I modified the implementation to monitor both endpoints, resulting in a more reliable third-party integration test.
 
 ---
 
-## Prompt #7
+## Prompt 6 — Concurrent User Simulation and SLA Validation
 
 **What I asked:**
-"Help me automate mobile responsiveness verification for 375px and 768px viewports."
 
-**What Claude did:**
-Suggested viewport-based layout validation and hamburger menu checks.
+"The assignment requires exactly five concurrent users, p95 response time below three seconds, and zero HTTP 5xx errors. How can this be implemented correctly without violating the maximum user constraint?"
 
-**What I changed / accepted / rejected:**
-The mobile hamburger menu behaved differently under Playwright Codegen compared to manual browser execution. I used Playwright Inspector and manual DOM inspection to investigate the issue. After experimentation, I implemented viewport validation, overflow checks, and menu visibility verification instead of relying solely on generated scripts.
+**What the AI did:**
+
+The AI suggested different concurrency strategies including asynchronous execution using `Promise.all()`, response interception, p95 calculation logic, and load metric aggregation.
+
+**What I changed:**
+
+Multiple implementation approaches were evaluated before finalizing the load test. I redesigned the execution flow to ensure that all five users accessed the application concurrently rather than sequentially. Additional logic was introduced to capture individual load times, aggregate execution metrics, calculate p95 response time, and monitor server-side failures. Considerable effort was spent investigating and optimizing the implementation because observed response times consistently exceeded the required SLA. After repeated executions and analysis, it was determined that the application's actual performance characteristics were responsible for the SLA violation rather than deficiencies in the automation framework. The original SLA assertion was intentionally preserved and documented as a product defect.
+
+---
+
+## Prompt 7 — Mobile Navigation and Responsive Validation
+
+**What I asked:**
+
+"The website collapses into a hamburger menu on mobile viewports, but Playwright Codegen cannot interact with the menu reliably. How can mobile navigation collapse be automated?"
+
+**What the AI did:**
+
+The AI suggested using Playwright Inspector, manual locator discovery, viewport-specific assertions, and alternative selector strategies.
+
+**What I changed:**
+
+Playwright Codegen was unable to identify the hamburger interaction correctly even though the functionality worked manually. I used Playwright Inspector and browser inspection tools to discover stable accessibility-based locators for the mobile menu. I then implemented viewport validation, menu visibility checks, and content reflow assertions for 375px and 768px viewports to satisfy the assignment requirements.
