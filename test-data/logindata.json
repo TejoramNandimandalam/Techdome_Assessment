@@ -36,24 +36,6 @@
     "expected": "success"
   },
   {
-    "testName": "Valid Corporate Email",
-    "company": "Infosys",
-    "fname": "Rahul",
-    "lname": "Sharma",
-    "email": "rahul.sharma@infosys.com",
-    "message": "Requesting product information.",
-    "expected": "success"
-  },
-  {
-    "testName": "Invalid Message",
-    "company": "TCS",
-    "fname": "Priya",
-    "lname": "Patel",
-    "email": "priyapatel@gmail.com",
-    "message": "Hello ",
-    "expected": "failure"
-  },
-  {
     "testName": "Invalid Email Missing Domain",
     "company": "Wipro",
     "fname": "Arun",

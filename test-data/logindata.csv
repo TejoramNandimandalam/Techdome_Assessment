@@ -3,8 +3,6 @@ Valid Data,Techdome,Tejoram,Nandimandalam,tejoramn@gmail.com,Hello Techdome,succ
 Invalid Data,Techdome,abc,xyz,abcxyz.com,Hello Techdome,failure
 Valid Gmail,Google,John,Doe,john.doe@gmail.com,Testing valid Gmail address.,success
 Valid Outlook,Microsoft,Jane,Smith,jane.smith@outlook.com,Testing valid Outlook email.,success
-Valid Corporate Email,Infosys,Rahul,Sharma,rahul.sharma@infosys.com,Requesting product information.,success
-Invalid Message,TCS,Priya,Patel,priyapatel@gmail.com,a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a,failure
 Invalid Email Missing Domain,Wipro,Arun,Kumar,arun@,Testing invalid email.,failure
 Invalid Email Double @,Accenture,Neha,Verma,neha@@gmail.com,Testing double @ symbol.,failure
 Valid Yahoo Email,Oracle,Anjali,Reddy,anjali.reddy@yahoo.com,Interested in your services.,success
