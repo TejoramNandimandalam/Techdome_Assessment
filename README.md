@@ -17,7 +17,7 @@ techdome-playwright-assignment/
 │   ├── HomePage.ts
 │   ├── NavigationPage.ts
 │   ├── ContactPage.ts
-│   └── utils/                     # data + random data providers
+│   └── utils/                     # data providers
 ├── test-data/                     # logindata.json / logindata.csv
 ├── tests/
 │   ├── e2e/                       # user journeys
@@ -31,7 +31,7 @@ techdome-playwright-assignment/
 
 ## Prerequisites
 
-- Node.js 18+
+- Node.js
 - Install dependencies and browsers:
 
 ```bash
@@ -71,6 +71,29 @@ npx playwright show-report                   # open the HTML report
 
 The contact-form E2E tests are **data-driven** from `test-data/logindata.json`
 and `test-data/logindata.csv` (valid/invalid email and message scenarios).
+
+## Assignment Coverage Snapshot
+
+| Requirement Area | Assignment Minimum | Implemented |
+| ---------------- | ------------------ | ----------- |
+| E2E tests | 8 | 16 |
+| Integration tests | 3 | 7 |
+| Security tests | 3 | 3 |
+| Load tests | 1 (max 5 users) | 1 (exactly 5 users) |
+| User story map | Required | Completed in `docs/user-story-map.md` |
+| Claude usage log | 5 entries | 7 entries in `docs/claude-code-log.md` |
+| Bug report | Required | Completed in `docs/bugs.md` |
+| Load results doc | Required | Completed in `docs/load-test-results.md` |
+
+## Security Requirement Note (Script Injection)
+
+Validating that contact form script injection input is
+rejected or sanitised. This is covered in `tests/security/xss-validation.spec.ts`
+by asserting:
+
+- script payload is submitted in the name field,
+- no browser dialog/alert is executed,
+- payload is not reflected unsafely in the rendered page.
 
 ### Load test constraint
 

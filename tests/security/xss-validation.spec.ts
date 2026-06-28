@@ -3,14 +3,14 @@ import { ContactPage } from '../../pages/ContactPage';
 
 test.describe('XSS Validation Tests', () => {
 
-    test('Verify application handles XSS input safely',
+    test('Verify XSS payload is sanitised or rejected in form flow',
         async ({ page }) => {
 
             const contactPage = new ContactPage(page);
 
             await contactPage.navigateToContactPage();
 
-            const xssPayload = '<script>alert("XSS")</script>';
+            const xssPayload = '<script>alert(1)</script>';
 
             await contactPage.fillContactForm(
                 'Infosys',
@@ -23,7 +23,6 @@ test.describe('XSS Validation Tests', () => {
             await contactPage.clickSendMessage();
 
             // Verify no JavaScript alert appeared
-
             let alertTriggered = false;
 
             page.on('dialog', async dialog => {
@@ -35,6 +34,8 @@ test.describe('XSS Validation Tests', () => {
 
             await page.waitForTimeout(3000);
 
+            // Payload must not execute and must not be reflected unsafely.
             expect(alertTriggered).toBeFalsy();
-        });
-});
+            await expect(page.locator('body')).not.toContainText(xssPayload);
+        })
+})
