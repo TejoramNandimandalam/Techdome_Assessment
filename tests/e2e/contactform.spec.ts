@@ -3,8 +3,8 @@ import { ContactPage } from '../../pages/ContactPage';
 import { DataProvider } from '../../pages/utils/dataProvider';
 import { baseURL, HomePage } from "../../pages/HomePage";
 
-//Load JSON test data logindata.json
-const jsonPath = "test-data/logindata.json";
+//Load JSON test data Customdata.json
+const jsonPath = "test-data/Customdata.json";
 const jsonTestData = DataProvider.getTestDataFromJson(jsonPath);
 
 for (const data of jsonTestData) {
@@ -32,8 +32,8 @@ for (const data of jsonTestData) {
     })
 }
 
-//Load CSV test data logindata.json
-const csvPath = "test-data/logindata.csv";
+//Load CSV test data Customdata.json
+const csvPath = "test-data/Customdata.csv";
 const csvTestData = DataProvider.getTestDataFromCsv(csvPath);
 
 for (const data of csvTestData) {
