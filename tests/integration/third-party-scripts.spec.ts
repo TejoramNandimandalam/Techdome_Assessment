@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { baseURL } from '../../pages/HomePage';
+import { baseURL, HomePage } from '../../pages/HomePage';
 
 test.describe('Third Party Script Tests', () => {
 
@@ -24,8 +24,12 @@ test.describe('Third Party Script Tests', () => {
                 }
             });
 
+            const homePage = new HomePage(page);
             await page.goto(baseURL)
             await page.waitForTimeout(3000)
+
+            // Verify page loaded successfully
+            await homePage.verifyHomePageLoaded();
 
             expect(
                 analyticsRequests.length
