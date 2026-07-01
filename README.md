@@ -18,7 +18,7 @@ techdome-playwright-assignment/
 │   ├── NavigationPage.ts
 │   ├── ContactPage.ts
 │   └── utils/                     # data providers
-├── test-data/                     # logindata.json / logindata.csv
+├── test-data/                     # customdata.json / customdata.csv
 ├── tests/
 │   ├── e2e/                       # user journeys
 │   ├── integration/               # API / network / third-party

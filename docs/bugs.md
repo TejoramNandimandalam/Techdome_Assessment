@@ -10,14 +10,12 @@ Testing was carried out using Playwright automation, browser developer tools, an
 
 | ID      | Severity | Module                     | Summary                                                                        |
 | ------- | -------- | -------------------------- | ------------------------------------------------------------------------------ |
-| BUG-001 | Medium   | Navigation                 | Hover-based navigation menus exhibit inconsistent behaviour during interaction |
-| BUG-002 | High     | Contact Form / Integration | Contact form submission does not expose an observable backend request          |
+| BUG-001 | High     | Contact Form / Integration | Contact form submission does not expose an observable backend request          |
+| BUG-002 | High     | Performance                | Application fails required performance SLA under concurrent load               |
 | BUG-003 | Medium   | Contact Form               | Phone Number field accepts unrealistic input lengths                           |
 | BUG-004 | Medium   | Contact Form               | Message field validates character limit only after submission                  |
 | BUG-005 | Medium   | Security                   | Recommended HTTP security headers are missing                                  |
-| BUG-006 | High     | Performance                | Application fails required performance SLA under concurrent load               |
-| BUG-007 | Low      | Accessibility              | Keyboard focus indicators are not clearly visible on certain elements          |
-| BUG-008 | Low      | Usability                  | Contact form data is lost on browser refresh without warning                   |
+| BUG-006 | Low      | Usability                  | Contact form data is lost on browser refresh without warning                   |
 
 ---
 
