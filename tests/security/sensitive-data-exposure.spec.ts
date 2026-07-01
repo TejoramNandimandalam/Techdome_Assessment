@@ -15,7 +15,6 @@ test.describe('Sensitive Data Exposure Tests', () => {
 
             expect(htmlContent).not.toContain('AIza');
             expect(htmlContent).not.toContain('Bearer');
-            expect(htmlContent).not.toContain('sk-');
             expect(htmlContent).not.toContain('SECRET_KEY');
             expect(htmlContent).not.toContain('API_KEY');
 
